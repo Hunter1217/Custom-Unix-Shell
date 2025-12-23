@@ -299,8 +299,10 @@ void shell_loop(){
     do{
         printf("> ");
         line = read_line(); //get the line inputted by user
+        if(strcmp(line, "\n\0") == 0){
+            continue;
+        }
         args = split_line(line); //split the line into arguments
-
         if(strcmp(args[0], "echo") == 0){ //echo function
 
             if((args[1] != NULL) && (strcmp(args[1], "-n") == 0)){ //functionality for -n argument
